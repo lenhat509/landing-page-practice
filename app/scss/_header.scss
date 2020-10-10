@@ -1,7 +1,29 @@
 .header {
+    position: relative;
+
+
+    &.open {
+        .header__menu {
+            > span:first-child {
+                transform: rotate(45deg);
+                        }
+
+            > span:nth-child(2) {
+                display: none;
+            }
+
+            > span:last-child {
+                transform: rotate(-45deg);
+            }
+        }
+    }    
 
     nav {
-        padding: 1.0625rem 1.5rem;
+        position: relative;
+        padding-top: 1.0625rem;
+        padding-bottom: 1.0625rem;
+        background-color: $white;
+        
     }
     &_logo {
         img {
@@ -12,17 +34,17 @@
 
     &__menu { // mobile menu
 
-        > span {
+        > span {    
             display: block;
             width: 1.625rem;
             height: 0.125rem;
             background-color: $darkBlue;
+            transform-origin: 9px 1px;
+            transition: all 300ms;
 
             &:not(:last-child) {
                 margin-bottom: 0.1875rem;
             }
-
-            
         }
     }
 
@@ -67,6 +89,33 @@
 
         &:hover {
             opacity: 0.75;
+        }
+    }
+    .overlay {
+        visibility: hidden;
+        position: fixed;
+        background-image: linear-gradient($darkBlue, transparent);
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
+    &__drop-menu {
+
+        visibility: hidden;
+        position: absolute;
+        top: 5.3125rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        background: white;
+        text-align: center;
+        border-radius: 10px;
+
+        a {
+            color: $darkBlue;
+            display: block;
+            padding: 0.9375rem 0;
         }
     }
 }
